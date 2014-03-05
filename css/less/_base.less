@@ -337,16 +337,21 @@ body {
 	color: @black;
 }
 .site {
-	.padding(0, 24px);
+	background: @sec-color;
 
 }
 .site-header { 
-	.padding-bottom(24px);
+	.padding-bottom(10px);
 }
 .site-main {
 	overflow: hidden;
+	background: @tert-color;
+	.padding(10px);
 	
 	.content-area {
+		background: @white;
+		.padding(10px);
+		
 	
 		.site-content {
 			word-wrap: break-word;
@@ -385,7 +390,7 @@ a, a:visited {
 /** H1, H2, H3, H4, H5, H6 Styles 
 -------------------------------------------------------------- */
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-	.margin(24px, 0);
+	margin: 0;
 	font-family: @sans-serif;
 	text-rendering: optimizelegibility;
 	font-weight: 400;
@@ -593,7 +598,6 @@ header#masthead .site-header
 .site-header {
 
 	.inner-header {
-		background: url(../images/buffy-banner-350.png) no-repeat;
 		height: 100%;
 	}
 }	
@@ -636,15 +640,12 @@ header#masthead .site-header
 						a
 -------------------------------------------------------------- */
 .main-navigation {
-	.margin-top(24px);
 	text-align: center;	
 	
 	.screen-reader-text {}
 	.skip-link {}
 } /* end .main-navigation */
 ul.nav-menu {
-	border-top: 2px solid #444;
-	border-bottom: 2px solid #444;
 	display: none;
 	
 	li {
@@ -654,7 +655,7 @@ ul.nav-menu {
 		text-align: left;
 		
 		a {
-			color: @black;
+			color: @white;
 			/*
 			remember this is for mobile ONLY, so there's no need
 			to even declare hover styles here, you can do it in
@@ -745,10 +746,12 @@ POSTS & CONTENT STYLES
 /** Entry Title
 -------------------------------------------------------------- */
 .entry-title {
-	.font-size(20px);
+	.font-size(22px);
 	font-weight: normal;
+	font-family: @serif;
 	
 	a {
+		color: #444;
 		text-decoration: none;
 	}
 }
@@ -773,7 +776,7 @@ POSTS & CONTENT STYLES
 	.author {}
 	.edit-link {} 
 	a {
-		color: @grey;
+		color: @link-color;
 	}
 }	
 
@@ -1358,15 +1361,12 @@ SIDEBARS & ASIDES
 ******************************************************************/
 
 .widget-area {
-	.padding(10px);
 	list-style: none;
-	background-color: #FFFEFE;
 	
 	.widget {
 		-webkit-hyphens: auto;
 		-moz-hyphens: auto;
 		hyphens: auto;
-		.margin-bottom(48px);
 		word-wrap: break-word;
 		
 		.widget-title {}
@@ -1410,14 +1410,10 @@ SIDEBARS & ASIDES
 FOOTER STYLES
 ******************************************************************/
 .site-footer {
-	border-top: 1px solid #ededed;
 	clear: both;
 	.font-size(12px);
-	.max-width(960px);
-	.margin-top(24px);
 	margin-left: auto;
 	margin-right: auto;
-	.padding(24px, 0);
 	
 	#inner-footer {}
 	.entry-meta {

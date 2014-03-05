@@ -65,32 +65,37 @@ body
 		+footer#colophon .site-footer
 -------------------------------------------------------------- */
 html {}
-body {}
+body {
+	background: @main-bg;
+}
 .wrap {
-	.max-width(960px);
+	.max-width(1000px);
 	margin: 0 auto 0;
 }
 .site {
 	.wrap;
 	.margin-top(10px);
+	.margin-bottom(10px);
 	.padding(10px);
-	box-shadow: 1px 1px 10px #ccc;
 	overflow: hidden;
 }	
 .site-header { }
 .site-main {
 	clear: both;
-	.wrap;
 	
 	.content-area {
-	
+		.column(8);
+		.first;
+		border: 1px solid #ddd;
+		
 		.site-content {
 			.margin-top(28px);
 		}
 	}
 	
 	.widget-area {
-		border-left: 1px solid #EDEDED;
+		.column(4);
+		.last;
 		
 		.aside1 {}
 		.aside2 {}
@@ -101,7 +106,7 @@ body {}
 /** Layout Selection
 -------------------------------------------------------------- */ 
 // chooose a layout
-.content-sidebar(4); //enter value of sidebar
+//.content-sidebar(4); //enter value of sidebar
 //.content-sidebar-sidebar(3, 4, 5); //enter value of content then sidebar(s) combined	
 //.sidebar-content(4); //enter value of sidebar
 //.sidebar-sidebar-content(3, 3, 6); //enter value of sidebar(s) combined then content
@@ -203,19 +208,19 @@ header#masthead .site-header
 .site-header {
 
 	.inner-header {
-		background: url(../images/buffy-banner.png) no-repeat;
 		.wrap;
 	}
 }
 .site-branding {
-	.height(145px);
+	background: url('../images/header.png') no-repeat;
+	.height(150px);
 	
-	a { 
-		&:hover { color: @white; }
+	a {}
+	.site-title {
+		display: none;
 	}
-	.site-title {}
 	.site-description {
-		color: @white;
+		display: none;
 	}
 	.header-image {}
 }
@@ -241,6 +246,10 @@ header#masthead .site-header
 	display: none;
 }
 .main-navigation {
+	background-color: @main-color;
+	.green-gradient;
+	.margin-top(10px);
+	
 	.screen-reader-text {}
 	.skip-link {}
 } /* end .main-navigation */
@@ -260,11 +269,14 @@ ul.nav-menu {
 		
 		a {
 			border-bottom: 0;
-			color: @grey;
-			text-transform: uppercase;
+			color: white;
+			text-transform: capitalize;
 			white-space: nowrap;
 			display: inline-block;
-			text-decoration: none;	
+			text-decoration: none;
+			font-family: @serif;
+			.font-size(18px);
+			.padding(10px, 0);
 			
 			&:hover, &:focus { color: @black; }					
 		}
@@ -696,7 +708,17 @@ SIDEBARS & ASIDES
 
 .widget-area {
 	.widget {
-		.widget-title {}
+		background-color: @white;
+		border: 1px solid #ddd;
+		.padding(10px);
+		.margin-bottom(10px);
+		
+		.widget-title {
+			.green-gradient;
+			color: @white;
+			.padding(5px);
+			.font-size(12px);
+		}
 		a {
 			&:hover { color: @link-hover; }
 		}
@@ -730,10 +752,27 @@ can be found in the bones theme */
 FOOTER STYLES
 ******************************************************************/
 .site-footer {
-	#inner-footer {}
+	.green-gradient;
+	color: @white;
+	margin: 0;
+	
+	.site-info {
+		.padding(10px);
+		text-align: center;
+	}
 	.entry-meta {}
-	a {
-		&:hover { color: @link-hover; }
+	p {
+		margin: 0;
+		
+		a {
+			color: @white; 
+			display: inline;
+			
+			&:hover { 
+				color: @white; 
+				text-decoration: underline;
+			}
+		}
 	}
 	ul {
 		li {

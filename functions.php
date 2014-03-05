@@ -79,6 +79,7 @@ MISC
 	 - remove_default_post_formats()
 	 - Google Analytics
 ------------------------------------------------------------------*/
+require_once('inc/functions-widgets.php'); 
 
 require_once('inc/functions-admin.php'); 
 /*------------------------------------------------------------------
