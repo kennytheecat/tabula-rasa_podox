@@ -124,6 +124,11 @@ function tr_scripts_and_styles() {
 	
     //adding scripts file in the footer
     wp_register_script( 'tabula_rasa-js', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), '', true );
+
+    //mobile menu
+    wp_register_script( 'mmenu-js', get_stylesheet_directory_uri() . '/js/jquery.mmenu.js', array( 'jquery' ), '', true );
+		
+    wp_register_style( 'mmenu-css', get_stylesheet_directory_uri() . '/css/jquery.mmenu.css', array(), '', 'all' );		
 		
 	//dont know if this is styled right
 	//Adds JavaScript for handling the navigation menu hide-and-show behavior.
@@ -133,7 +138,9 @@ function tr_scripts_and_styles() {
 	//wp_enqueue_script( 'Tabula Rasa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
     // enqueue styles and scripts
-    wp_enqueue_script( 'tabula_rasa-modernizr' );
+    wp_enqueue_script( 'mmenu-js' );		
+    wp_enqueue_style( 'mmenu-css' );
+   // wp_enqueue_script( 'tabula_rasa-modernizr' );
     wp_enqueue_style( 'tabula_rasa-stylesheet' );
     wp_enqueue_style('tabula_rasa-ie-only');
 
@@ -354,8 +361,8 @@ function tr_content_nav( $html_id ) {
 
 	<?php if ( is_single() ) : // navigation links for single posts ?>
 
-		<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'tabula-rasa' ) . '</span> %title' ); ?>
-		<?php next_post_link( '<div class="nav-next">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'tabula-rasa' ) . '</span>' ); ?>
+		<?php previous_post_link( '<div class="nav-previous">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'tabula-rasa' ) . '</span> %title', TRUE ); ?>
+		<?php next_post_link( '<div class="nav-next">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'tabula-rasa' ) . '</span>', TRUE ); ?>
 
 	<?php elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages ?>
 

@@ -78,6 +78,7 @@ body {
 	.margin-bottom(10px);
 	.padding(10px);
 	overflow: hidden;
+	background: @sec-color;
 }	
 .site-header { }
 .site-main {
@@ -86,10 +87,11 @@ body {
 	.content-area {
 		.column(8);
 		.first;
+		background-color: @white;
 		border: 1px solid #ddd;
+		.padding(10px);		
 		
 		.site-content {
-			.margin-top(28px);
 		}
 	}
 	
@@ -132,9 +134,11 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 }
 
 h1, .h1 {}
-h2, .h2 {}
+h2, .h2 {
+}
 h1, .h1, h2, .h2 {}
-h3, .h3 {}
+h3, .h3 {
+}
 h4, .h4 {}
 h5, .h5 {}
 h6, .h6 {}
@@ -223,6 +227,9 @@ header#masthead .site-header
 		display: none;
 	}
 	.header-image {}
+	.mobile-menu {
+		display: none;
+	}
 }
 .logo {
 	text-align: left;
@@ -248,7 +255,7 @@ header#masthead .site-header
 .main-navigation {
 	background-color: @main-color;
 	.green-gradient;
-	.margin-top(10px);
+	.margin(10px, 0);
 	
 	.screen-reader-text {}
 	.skip-link {}
@@ -258,14 +265,15 @@ ul.nav-menu {
 	text-align: left;
 	width: 100%;		
 	margin: 0;
+	padding: 0;
 	text-indent: 0;
 	
 	li {
 		margin: 0;
-		.margin-right(40px);
 		position: relative;
 		display: inline-block;
 		text-decoration: none;
+		.padding(5px, 9px);
 		
 		a {
 			border-bottom: 0;
@@ -275,10 +283,14 @@ ul.nav-menu {
 			display: inline-block;
 			text-decoration: none;
 			font-family: @serif;
-			.font-size(18px);
-			.padding(10px, 0);
+			.font-size(16px);
 			
-			&:hover, &:focus { color: @black; }					
+			&:hover, &:focus { 
+				color: @white;
+			}					
+		}
+		&:hover {
+			background-color: #f05200;
 		}
 		&:first-child {}
 		&:last-child {}
@@ -289,30 +301,39 @@ ul.nav-menu {
 			li {
 				margin: 0;
 				padding: 0;
+				background-color: #2F3F31;
 				
 				a {
-					background: #fff;
-					border-bottom: 2px solid #222;
-					.font-size(11px);
+					.font-size(14px);
 					.padding(8px, 10px);
 					.width(180px);
 					
 					&:hover,
 					&:focus {
-						background: #e3e3e3;
-						color: @black;
+						background-color: #f05200;
 					}
 					&:link {}
 				}
 				&:first-child {}
 				&:last-child {}
+				ul.sub-menu {
+					display: none;
+				}
+				&:hover ul { 
+					position: absolute;
+					display: inline-block;
+					.margin-left(140px);
+					.margin-top(-40px);
+					z-index: 50;
+				}				
 			}
 		}
 		&:hover ul { 
 			position: absolute;
 			display: inline-block;
-			.margin-left(-45px);
-			.padding-top(2px);
+			.margin-left(-50px);
+			.padding-top(5px);
+			z-index: 50;
 		}
 	} /* end .nav-menu li */
 	/* highlight current page */
@@ -499,6 +520,71 @@ POST FORMATS
 STANDARD PAGES
 ******************************************************************/
 
+/** Home 
+-------------------------------------------------------------- */
+.home {
+	.home_mobile {
+		display: none;
+	}
+	.site-main {	
+		.content-area {
+			background-color: #eee;
+			.padding(0);	
+			border: none;
+		}
+	}		
+	.hentry {
+		.min-height(135px);
+	}
+	h2 {
+		.margin-bottom(5px);
+	}
+	.entry-title {
+		&:first-of-child {
+			.padding-top(5px);
+		}
+		a {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	.home_archive {
+		background-color: @white;
+		border: 1px solid #ddd;
+		.padding(10px);	
+	}	
+	.home_gallery {
+		display: block;
+		width: 100%;
+		.margin-bottom(10px);
+	}
+	.home_archive_left {
+		.column(6);
+		.first;
+	}
+	.home_archive_right {
+		.column(6);
+		.last;
+	}
+	.home_archive_bottom {
+		.column(12);
+		margin: 0;
+		.margin-top(10px);
+		
+		article:nth-child(even) {
+			.column(6);
+			.first;
+			clear: none;
+		}
+		article:nth-child(odd) {
+			.column(6);
+			.last;
+			clear: none;
+		}		
+	}
+}
+		
 /** Archives
 -------------------------------------------------------------- */
 .archive {
@@ -506,20 +592,75 @@ STANDARD PAGES
 	.archive-meta {}
 }
 
-/** Front Page
+/** Gallery and Newsletter
 -------------------------------------------------------------- */
-.template-front-page {
-	.home_top {
-		.locations {}
-		.featured {}
+.category-gallery,
+.category-weekly-bulletin,
+.category-newsletter {
+	.archive-header {
+		border: none;
 	}
-	.spotlights {
-		.spotlight {}
+	article {
+		border: none;
+		border-top: 4px double #ededed;
+		.padding-top(10px);
+
+		.entry-header {
+			
+			.entry-title {
+				.font-size(18px);
+				.line-height(20px);
+			}
+			.entry-meta {
+				.font-size(12px);
+				margin: 0;
+			}
+		}
 	}
 }
 
-/** Home 
+.category-weekly-bulletin,
+.category-newsletter {
+
+	article {
+		
+		&:nth-of-type(3n+1) {
+			.column(4);
+			.first;
+			clear: both;
+		}	
+		&:nth-of-type(3n+2) {
+			.column(4);
+			clear: none;
+		}
+		&:nth-of-type(3n+3) {
+			.column(4);
+			.last;
+			clear: none;
+		}		
+	}
+}
+
+.category-gallery {
+
+	article {
+		
+		&:nth-of-type(2n+1) {
+			.column(6);
+			.first;
+			clear: both;
+		}	
+		&:nth-of-type(2n+2) {
+			.column(6);
+			.last;
+			clear: none;
+		}
+	}
+}
+
+/** Newsletter
 -------------------------------------------------------------- */
+
 
 /** Search Results
 -------------------------------------------------------------- */
@@ -567,6 +708,37 @@ STANDARD PAGES
 .paged {}                         /* paged items like search results or archives */
 	.paged-1 {}                     /* individual paged (i.e. body.paged-3) */
 
+
+/** Calendar
+-------------------------------------------------------------- */
+.page-id-6 {
+	.entry-thumbnail {
+		display: none;
+	}
+	.content-area {
+		.column(12);
+	}
+	.widget-area {
+		display: none;
+	}
+	iframe {
+		//.height(900px);
+	}
+}
+.mobile-cal {
+	display: none;
+}
+.desktop-cal {
+	display: block;
+}
+
+/** Driving Directions
+-------------------------------------------------------------- */
+.page-id-121 {
+	iframe {
+		.height(500px);
+	}
+}
 
 /******************************************************************
 COMMENT STYLES
@@ -711,6 +883,7 @@ SIDEBARS & ASIDES
 		background-color: @white;
 		border: 1px solid #ddd;
 		.padding(10px);
+		.padding-bottom(5px);
 		.margin-bottom(10px);
 		
 		.widget-title {
@@ -725,6 +898,10 @@ SIDEBARS & ASIDES
 		p {}
 		ul {
 			li {
+				.margin(10px);
+background: #FFFFFF url(../images/icon.gif) no-repeat top left;
+padding: 0px 0px 5px 20px;
+				
 				&:first-child {}
 				&:last-child {}
 				a {}
@@ -739,11 +916,46 @@ SIDEBARS & ASIDES
 	}
 }
 	
-/** Widget 1
+/** Schedule
 -------------------------------------------------------------- */
+.schedule {
+	p.headline {
+		font-family: @serif;
+		.font-size(22px);
+		text-align: right;
+		.margin(5px, 0);
+		.margin-bottom(0);
+	}	
+	p.text {
+		.font-size(13px);
+		font-style: italic;
+		font-family: @sans-serif;
+		text-align: right;
+		margin: 0;
+	}
+}
 
-/** Widget 2 
+/** Daily Scripture Readings
 -------------------------------------------------------------- */
+.daily_scripture {
+	object, embed, iframe, video {
+		.height(400px);
+	}	
+	table tr td {
+		border: none;
+	}
+}
+
+/** Fredricka Matthews-Green Salvation Video
+-------------------------------------------------------------- */
+.green_video {
+	object, embed, iframe, video {
+		.height(240px);
+	}
+	h3 {
+		.margin-bottom(5px);
+	}
+}
 
 /* If I ever release this as a theme a list of css for basic widgets 
 can be found in the bones theme */
@@ -759,9 +971,12 @@ FOOTER STYLES
 	.site-info {
 		.padding(10px);
 		text-align: center;
-	}
-	.entry-meta {}
+		
+		h3 {
+			display: none;
+		}
 	p {
+		display: inline;
 		margin: 0;
 		
 		a {
@@ -773,7 +988,9 @@ FOOTER STYLES
 				text-decoration: underline;
 			}
 		}
+	}		
 	}
+	.entry-meta {}
 	ul {
 		li {
 			a {}

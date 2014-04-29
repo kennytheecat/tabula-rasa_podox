@@ -111,7 +111,7 @@ HELP PAGE
 	-  my_help_menu
 ------------------------------------------------------------------*/
 
-require_once('inc/custom-post-type.php'); 
+//require_once('inc/custom-post-type.php'); 
 /*------------------------------------------------------------------
 CUSTOM POST TYPES
 	- Construction Post Type
@@ -124,7 +124,7 @@ Posts 2 Posts
 		// Associates construction posts to construction post types
 ------------------------------------------------------------------*/
 
-require_once('inc/theme-options.php');
+//require_once('inc/theme-options.php');
 /** Creates "Theme Options" page under Appearance Tab
 
 /*********************************************************
@@ -161,12 +161,13 @@ THEME SUPPORT
 
 function tr_theme_specific_support() {
 	// default thumb size
-	set_post_thumbnail_size(150, 150, true);
+	set_post_thumbnail_size(116, 116, true);
 
 	if ( function_exists( 'add_image_size' ) ) { 
-		add_image_size( 'featured-home', 500, 250, true ); //500 pixels wide 
-		add_image_size( 'featured-destination', 300, 280, true ); //300 pixels wide 
-		add_image_size( 'page-banner', 640, 150, true ); //640 pixels wide 
+		add_image_size( 'small-thumbnail', 90, 90, true ); //500 pixels wide 
+		add_image_size( 'home-gallery', 300, 125, true ); //500 pixels wide 
+		//add_image_size( 'featured-destination', 300, 280, true ); //300 pixels wide 
+		//add_image_size( 'page-banner', 640, 150, true ); //640 pixels wide 
 	}	
 }	
 add_action('after_setup_theme','tr_theme_specific_support', 16);

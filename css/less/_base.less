@@ -84,7 +84,7 @@ p {
 /*  This is in the wrong spsce */
 .main-navigation ul.nav-menu,
 .main-navigation div.nav-menu > ul {
-	display: none;
+	//display: none;
 }
 .main-navigation ul.nav-menu.toggled-on,
 .menu-toggle {
@@ -241,6 +241,25 @@ img.wp-post-image {
 	height: auto; /* Make sure images with WordPress-added height and width attributes are scaled correctly */
 }
 
+/* Responsive iFrame */
+ 
+.responsive-iframe-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+}
+ 
+.responsive-iframe-container iframe,   
+.responsive-iframe-container object,  
+.responsive-iframe-container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
 /** Images
 -------------------------------------------------------------- */
 .alignleft {
@@ -309,7 +328,9 @@ img.wp-smiley,
 .gallery-columns-1 .gallery-icon img {
 	.padding(3%);
 }
-
+img.no_img_border {
+	box-shadow: none;
+}
 /******************************************************************
 LAYOUT & GRID STYLES
 ******************************************************************/
@@ -337,21 +358,17 @@ body {
 	color: @black;
 }
 .site {
-	background: @sec-color;
-
+	//background: @sec-color;
+	background: @main-color;
 }
 .site-header { 
-	.padding-bottom(10px);
 }
 .site-main {
 	overflow: hidden;
 	background: @tert-color;
 	.padding(10px);
 	
-	.content-area {
-		background: @white;
-		.padding(10px);
-		
+	.content-area {		
 	
 		.site-content {
 			word-wrap: break-word;
@@ -359,13 +376,14 @@ body {
 	}
 	
 	.widget-area {
+		display: none;
+		
 		.aside1 {}
 		.aside2 {}
 	}
 }
 .site-footer {
 	clear: both;
-	.margin-top(10px);
 }
 
 /** Links
@@ -410,17 +428,26 @@ h1, .h1 {
 	.font-size(21px);
 }
 h2, .h2 {
-	.font-size(18px);
+	.green-gradient;
+	color: @white;
+	.padding(5px);
+	.padding-bottom(3px);
+	.padding-left(10px);
+	.font-size(12px);
+	text-transform:uppercase;
+	font-family: @sans-serif;
 }
-h1, .h1, h2, .h2 {
+h1, .h1, h2, .h2, h3, .h3 {
 font-weight:bold;
-font-family: 'Open Sans Condensed', serif;
-color: #333;
-.padding-bottom(5px);
-text-shadow: 1px 1px 0px rgba(238, 238, 238, 0.5);
 }
 h3, .h3 {
-	.font-size(16px);
+	.green-gradient;
+		color: @white;
+		.padding(5px);
+		.padding-bottom(3px);
+		.padding-left(10px);		
+		.font-size(12px);
+		text-transform:uppercase;		
 }
 h4, .h4 {
 	.font-size(14px);
@@ -435,15 +462,14 @@ h6, .h6 {
 /** THE BASICS
 -------------------------------------------------------------- */
 p {
-	.margin-bottom(24px);
+	
 }
 ul, ol, table, dl {}
 ul, ol {
 	list-style: none;	
-	.margin-bottom(24px);		
+			
 
 	li {
-		.margin-bottom(36px);
 	}
 }
 ul {
@@ -461,11 +487,20 @@ ol ol { margin-bottom: 0; }
 ol ul { margin-bottom: 0; }
 ul ol { margin-bottom: 0; }
 blockquote {
-	.margin-bottom(24px);
-	.padding(24px);
+	
+background: #E8E8E8;
+margin: 0px 25px 15px 25px;
+padding: 10px 20px 0px 15px;
+border-top: 1px solid #DDDDDD;
+border-right: 1px solid #666666;
+border-left: 1px solid #DDDDDD;
+border-bottom: 1px solid #666666;
 	font-style: italic;	
 	
 	&:before {}
+	p:first-child {
+		margin-top: 0;
+	}
 	p:last-child {
 		margin-bottom: 0;
 	}
@@ -474,7 +509,7 @@ table {
 	border-bottom: 1px solid #EDEDED;
 	color: #757575;
 	.font-size(12px);
-	.margin-bottom(24px);
+	
 	width: 100%;
 	
 	caption {
@@ -512,7 +547,7 @@ dl {
 		font-weight: bold;
 	}
 	dd {
-		.margin-bottom(24px);
+		
 	}
 }
 img {
@@ -528,10 +563,12 @@ but it's up to you. Feel free to change it up.
 .alignleft, img.alignleft {
 	.margin(12px, 24px);
 	.margin-bottom(0);
+	.margin-left(0);
 }
 .alignright, img.alignright {
 	.margin(12px, 24px);
 	.margin-top(0);
+	.margin-right(0);
 }
 .aligncenter, img.aligncenter {
 	.margin(12px, 0);
@@ -541,7 +578,7 @@ embed, iframe,
 video, object {
 	max-width: 100%;
 	height: auto;
-	.margin-bottom(24px);
+	
 }
 code {
 	font-family: Consolas, Monaco, Lucida Console, monospace;
@@ -551,10 +588,11 @@ del {
 	color: #333;
 }
 hr {
-	background-color: #ccc;
+	clear: both;
 	border: 0;
+	border-bottom: 1px dotted #AAAAAA;
 	.height(1px);
-	.margin(24px);
+	
 }
 pre {
 	border: 1px solid #ededed;
@@ -569,7 +607,7 @@ pre {
 }
 address {
 	display: block;
-	.margin-bottom(24px);
+	
 }	
 ins {
 	background: #FFF9C0;
@@ -603,21 +641,30 @@ header#masthead .site-header
 }	
 .site-branding {
 	text-align: left;
+	position: relative;
 	.padding-left(10px);
+
+	.mobile-menu {
+		position: absolute;
+		.top(5px);
+		.left(10px);
+		color: @white;
+	}	
 	
 	a {
 		color: @white;
-		display: inline-block;
+		display: block;
 		text-decoration: none;
+		text-align: center;
+		.line-height(30px);
 	}
 	.site-title {
-		.font-size(24px);
+		.font-size(16px);
 		.margin-bottom(14px);
+		display: inline;
 	}
 	.site-description {
-		font-weight: normal;
-		.font-size(13px);
-		color: @white;			
+		display: none;
 	}
 	.header-image {
 		.margin-top(24px);
@@ -646,10 +693,9 @@ header#masthead .site-header
 	.skip-link {}
 } /* end .main-navigation */
 ul.nav-menu {
-	display: none;
+	//display: none;
 	
 	li {
-		.margin-top(24px);
 		.font-size(12px);
 		list-style-type: none;
 		text-align: left;
@@ -693,7 +739,9 @@ ul.nav-menu {
 		a {}
 	}  /* end current highlighters */			
 } /* end .nav-menu ul */
-
+.mm-ismenu {
+	background: @main-color;
+}
 /******************************************************************
 POSTS & CONTENT STYLES
 ******************************************************************/
@@ -702,11 +750,29 @@ POSTS & CONTENT STYLES
 	clear: both;
 	header {}
 	footer {}
+	h1 {
+		font-family: @serif;
+		font-weight: normal;
+		.font-size(22px);
+	}
 	img {
-		.margin-bottom(16px);
 		.border-radius(3px);
 		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+		
+		.no_img_border {
+			box-shadow: none!important;
+		}
 	}	
+	a {
+		font-family: @sans-serif;
+		font-weight: bold;		
+		color: @link-color;
+		text-decoration: none;	
+		
+		&:hover {
+			text-decoration: underline;
+		}
+	}
 } /* end .hentry */
 
 .single-title,
@@ -724,7 +790,7 @@ POSTS & CONTENT STYLES
 	border-bottom: 4px double #ededed;
 	color: @grey;
 	.font-size(13px);
-	.margin-bottom(24px);
+	
 	text-align: center;
 }        
 .category-slug {}   /* style by category (i.e. category-videos) */
@@ -740,7 +806,7 @@ POSTS & CONTENT STYLES
 /** Entry Header
 -------------------------------------------------------------- */
 .entry-header {
-	.margin-bottom(24px);
+	
 }
 
 /** Entry Title
@@ -749,6 +815,7 @@ POSTS & CONTENT STYLES
 	.font-size(22px);
 	font-weight: normal;
 	font-family: @serif;
+	padding: 0;
 	
 	a {
 		color: #444;
@@ -759,16 +826,17 @@ POSTS & CONTENT STYLES
 /** Entry Thumbnail
 -------------------------------------------------------------- */
 .entry-thumbnail {
-	.margin-bottom(24px);
+	
 	float: left;
 	.padding(5px, 10px);
-	.padding-bottom(0);
+	.padding-left(0);
 }
 
 /** Entry Meta 
 -------------------------------------------------------------- */
 .entry-meta {
 	clear: both;
+	.font-size(14px);
 	
 	.date {}
 	.categories-links {}
@@ -988,7 +1056,7 @@ POST FORMATS
 -------------------------------------------------------------- */
 .format-status {
 	.entry-header {
-		.margin-bottom(24px);
+		
 		
 		header {
 			display: inline-block;
@@ -1018,27 +1086,64 @@ POST FORMATS
 STANDARD PAGES
 ******************************************************************/
 
+/** Home 
+-------------------------------------------------------------- */
+.home {
+	.home_gallery,
+	.home_archive_left,
+	.home_archive_right,
+	.home_archive_bottom {
+		display: none;
+	}
+	.font-size(13px);
+
+
+	h3 {
+		.font-size(13px);
+		background: none;
+		
+		a {
+			color: @link-color;
+		}
+	}
+	hr {
+		clear: both;
+	}
+}
+
 /** Archives
 -------------------------------------------------------------- */
 .archive {
+	article {
+		border-bottom: 4px double #ededed;		
+		.margin-bottom(20px);
+		
+		p {
+			margin: 0;
+		}
+	}
 	.archive-header {
-		.margin-bottom(48px);
-		.padding-bottom(22px);
-		border-bottom: 1px solid #ededed;
+		border-bottom: 4px double #ededed;
+	}
+	.archive-title {
+		.font-size(16px);
+		font-family: @serif;
+		font-weight: normal;
+		color: @black;
 	}
 	.archive-meta {
 		color: @grey;
 		.font-size(12px);
 		.margin-top(22px);
 	}
+	.entry-title {
+		padding: 0;
+	}
+	.entry-meta {
+		.margin-top(-5px);
+		.margin-bottom(5px);
+	}
 }
-
-/** Front Page
--------------------------------------------------------------- */
-.template-front-page {}
-
-/** Home 
--------------------------------------------------------------- */
 
 /** Search Results
 -------------------------------------------------------------- */
@@ -1091,6 +1196,12 @@ STANDARD PAGES
 	.paged-1 {}                     /* individual paged (i.e. body.paged-3) */
 
 
+/* Calendar 
+*******************************************************************/
+.desktop-cal {
+	display: none;
+}
+
 /******************************************************************
 COMMENT STYLES
 ******************************************************************/
@@ -1106,7 +1217,6 @@ COMMENT STYLES
 		span {}
 	}
 	article {
-		.margin(24px, 0);
 		
 		header {
 			margin: 0;
@@ -1217,7 +1327,7 @@ COMMENT STYLES
 			}
 		}
 		.pingback {
-			.margin-bottom(24px);
+			
 		}
 		.bypostauthor {
 			cite span {
@@ -1344,7 +1454,7 @@ COMMENT FORM STYLES
 	a {}
 }
 .logged-in-as {
-	.margin-bottom(24px);
+	
 }	
 .form-allowed-tags {
 	margin: 0;
@@ -1376,7 +1486,7 @@ SIDEBARS & ASIDES
 		}
 		p {
 			.font-size(13px);
-			.margin-bottom(24px);
+			
 		}
 		ul {	
 			.padding(0);
@@ -1421,6 +1531,22 @@ FOOTER STYLES
 		.font-size(13px);
 		color: @black;
 	}
+	.site-info {
+		p{
+			display: none;
+		}
+		h3 {
+			padding: 0;
+			
+			a {
+				color: @white;
+				text-align: center;
+				font-family: @sans-serif-title;
+				font-weight: bold;
+				.font-size(16px);
+			}
+		}
+	}
 	a { 
 		text-decoration: none;
 		text-align: right;
@@ -1442,7 +1568,7 @@ AUTHOR BIOS
 ******************************************************************/
 .author {
 	.archive-header {
-		.margin-bottom(24px);
+		
 	}
 	.author-info { 
 		border-top: 1px solid #ededed;

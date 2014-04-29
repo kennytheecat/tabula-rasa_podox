@@ -61,8 +61,10 @@ jQuery(document).ready(function($) {
     var responsive_viewport = $(window).width();
     
     /* if is below 481px */
-    if (responsive_viewport < 481) {
-    
+    if (responsive_viewport < 750) {
+			jQuery(document).ready(function($) {
+				$("#my-menu").mmenu();
+			});       
     } /* end smallest screen */
     
     /* if is larger than 481px */
@@ -96,32 +98,6 @@ a.createElement=function(c){return!e.shivMethods?b.createElem(c):p(c,a,b)};a.cre
 c=d.insertBefore(c.lastChild,d.firstChild);b.hasCSS=!!c}g||t(a,b);return a}var k=l.html5||{},s=/^<|^(?:button|map|select|textarea|object|iframe|option|optgroup)$/i,r=/^<|^(?:a|b|button|code|div|fieldset|form|h1|h2|h3|h4|h5|h6|i|iframe|img|input|label|li|link|ol|option|p|param|q|script|select|span|strong|style|table|tbody|td|textarea|tfoot|th|thead|tr|ul)$/i,j,o="_html5shiv",h=0,n={},g;(function(){try{var a=f.createElement("a");a.innerHTML="<xyz></xyz>";j="hidden"in a;var b;if(!(b=1==a.childNodes.length)){f.createElement("a");
 var c=f.createDocumentFragment();b="undefined"==typeof c.cloneNode||"undefined"==typeof c.createDocumentFragment||"undefined"==typeof c.createElement}g=b}catch(d){g=j=!0}})();var e={elements:k.elements||"abbr article aside audio bdi canvas data datalist details figcaption figure footer header mark meter nav output progress section summary time video",shivCSS:!1!==k.shivCSS,supportsUnknownElements:g,shivMethods:!1!==k.shivMethods,type:"default",shivDocument:q,createElement:p,createDocumentFragment:function(a,
 b){a||(a=f);if(g)return a.createDocumentFragment();for(var b=b||i(a),c=b.frag.cloneNode(),d=0,e=m(),h=e.length;d<h;d++)c.createElement(e[d]);return c}};l.html5=e;q(f)})(this,document);
-
-/**
- * Theme Customizer enhancements for a better user experience.
- *
- * Contains handlers to make Theme Customizer preview reload changes asynchronously.
- */
-
-( function( $ ) {
-	// Site title and description.
-	wp.customize( 'blogname', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a' ).text( to );
-		} );
-	} );
-	wp.customize( 'blogdescription', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-description' ).text( to );
-		} );
-	} );
-	// Header text color.
-	wp.customize( 'header_textcolor', function( value ) {
-		value.bind( function( to ) {
-			$( '.site-title a, .site-description' ).css( 'color', to );
-		} );
-	} );
-} )( jQuery );
 	
 // Skip Link Focus Fix
 ( function() {
@@ -143,39 +119,6 @@ b){a||(a=f);if(g)return a.createDocumentFragment();for(var b=b||i(a),c=b.frag.cl
 		}, false );
 	}
 })();
-
-/**
- *navigation.js
- *
- * Handles toggling the navigation menu for small screens.
- */
-( function() {
-	var container = document.getElementById( 'site-navigation' ),
-	    button    = container.getElementsByTagName( 'h1' )[0],
-	    menu      = container.getElementsByTagName( 'ul' )[0];
-
-	if ( undefined == button || undefined == menu )
-		return false;
-
-	button.onclick = function() {
-		if ( -1 == menu.className.indexOf( 'nav-menu' ) )
-			menu.className = 'nav-menu';
-
-		if ( -1 != button.className.indexOf( 'toggled-on' ) ) {
-			button.className = button.className.replace( ' toggled-on', '' );
-			menu.className = menu.className.replace( ' toggled-on', '' );
-			container.className = container.className.replace( 'main-small-navigation', 'navigation-main' );
-		} else {
-			button.className += ' toggled-on';
-			menu.className += ' toggled-on';
-			container.className = container.className.replace( 'navigation-main', 'main-small-navigation' );
-		}
-	};
-
-	// Hide menu toggle button if menu is empty.
-	if ( ! menu.childNodes.length )
-		button.style.display = 'none';
-} )();
 
 // Keyboard Image Navigation
 jQuery( document ).ready( function( $ ) {

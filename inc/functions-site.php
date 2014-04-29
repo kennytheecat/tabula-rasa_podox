@@ -48,9 +48,7 @@ function tr_entry_meta() {
 	// Translators: used between list items, there is a space after the comma.
 	$tag_list = get_the_tag_list( '', __( ', ', 'tabula-rasa' ) );
 
-	$date = sprintf( '<a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a>',
-		esc_url( get_permalink() ),
-		esc_attr( get_the_time() ),
+	$date = sprintf( '<time class="entry-date" datetime="%1$s">%2$s</time>',
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( get_the_date() )
 	);
@@ -63,12 +61,14 @@ function tr_entry_meta() {
 
 	// Translators: 1 is category, 2 is tag, 3 is the date and 4 is the author's name.
 	if ( $tag_list ) {
-		$utility_text = __( 'Posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'tabula-rasa' );
+		//$utility_text = __( 'Posted in %1$s and tagged %2$s on %3$s<span class="by-author"> by %4$s</span>.', 'tabula-rasa' );
+		$utility_text = __( 'Posted on %3$s.', 'tabula-rasa' );
 	} elseif ( $categories_list ) {
 		//$utility_text = __( 'This entry was posted in %1$s on %3$s<span class="by-author"> by %4$s</span>.', 'tabula-rasa' );
 		$utility_text = __( 'Posted on %3$s.', 'tabula-rasa' );
 	} else {
-		$utility_text = __( 'Posted on %3$s<span class="by-author"> by %4$s</span>.', 'tabula-rasa' );
+		//$utility_text = __( 'Posted on %3$s<span class="by-author"> by %4$s</span>.', 'tabula-rasa' );
+		$utility_text = __( 'Posted on %3$s.', 'tabula-rasa' );
 	}
 
 	printf(
@@ -189,4 +189,32 @@ function google_analytics_tracking_code(){ ?>
 	</script>
 <?php }	
 add_action('wp_head', 'google_analytics_tracking_code');
+
+/* Setup custom single page for galleries
+*************************************************/
+function get_custom_cat_template($single_template) {
+     global $post;
+ 
+       if ( in_category( 'gallery' )) {
+          $single_template = dirname( __FILE__ ) . '/../single-gallery.php';
+     }
+     return $single_template;
+}
+ 
+add_filter( "single_template", "get_custom_cat_template" ) ;
+
+
+/* Change posts per page for galleries and newsletters
+********************************************************/
+function posts_per_page_mod( $wp_query ) {
+	if ( is_category( 'gallery' ) ) {
+		$numofposts = 20;
+	}
+	if ( is_category( 'newsletter' ) || is_category( 'weekly-bulletin' ) ) {
+		$numofposts = 21;
+	}
+   set_query_var( 'posts_per_page', $numofposts );
+}
+add_action( 'pre_get_posts', 'posts_per_page_mod' );
+
 ?>
