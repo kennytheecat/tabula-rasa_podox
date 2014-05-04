@@ -32,13 +32,40 @@ get_header(); ?>
 				$archive = new WP_Query( $args );
 				while($archive->have_posts()) : $archive->the_post(); ?>
 					<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-							<h3 class="entry-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h3>
-							<div class="entry-thumbnail">
-								<?php the_post_thumbnail('small-thumbnail'); ?>
-							</div>
-						<div class="entry-content">
+						<?php 
+							//weekly bulletin modifications
+							if ( in_category( 'weekly-bulletin' ) ) { 
+								$news_title = get_the_title();								
+								$news_title = $news_title . ' Weekly Bulletin';
+							} else {
+								$news_title = get_the_title();	
+							}
+							if ( in_category( 'weekly-bulletin' ) || in_category( 'newsletter' ) ) {
+								$args = array(
+									'numberposts' => 1,
+									'post_mime_type' => 'application/pdf',
+									'post_parent' => $post->ID,
+									'post_type' => 'attachment',
+								);
+								$attachments = get_children( $args );	
+								if ( $attachments ) {
+									foreach ( $attachments as $attachment ) {
+										$news_link = wp_get_attachment_url( $attachment->ID);
+									}
+								}									
+							} else {											
+								$news_link = get_permalink();										
+							}
+						?>					
+								<h3 class="entry-title"><a href="<?php echo $news_link; ?>"><?php echo $news_title; ?></a></h3>
+								<div class="entry-thumbnail">
+									<a href="<?php echo $news_link; ?>">
+									<?php the_post_thumbnail('small-thumbnail'); ?>
+									</a>
+								</div>
+							<div class="entry-content">
 						<?php
-						$excerpt_length = 80;
+						$excerpt_length = 300;
 						$blog_excerpt = get_the_excerpt();
 						$text = strip_tags($blog_excerpt);
 						if (strlen($text) > $excerpt_length) {

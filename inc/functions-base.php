@@ -140,11 +140,11 @@ function tr_scripts_and_styles() {
 	// dont know is this is styled right
 	//wp_enqueue_script( 'Tabula Rasa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-    if ( wp_is_mobile() ) {
+    //if ( wp_is_mobile() ) {
 		// enqueue styles and scripts
     wp_enqueue_script( 'mmenu-js' );		
     wp_enqueue_style( 'mmenu-css' );
-		}
+	//	}
    // wp_enqueue_script( 'tabula_rasa-modernizr' );
     wp_enqueue_style( 'tabula_rasa-stylesheet' );
     wp_enqueue_style('tabula_rasa-ie-only');
