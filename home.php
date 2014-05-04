@@ -55,7 +55,37 @@ get_header(); ?>
 			?>					
 			</div>
 			<div class="home_archive home_gallery">
-				<?php dynamic_content_gallery(); ?>
+				<div id="slider">
+				<?php //dynamic_content_gallery(); ?>
+				<?php
+				$args = array (
+					'posts_per_page'         => '5',
+					'category__not_in'			 => '13'
+				);			
+				$archive = new WP_Query( $args );
+				while($archive->have_posts()) : $archive->the_post(); ?>
+				<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+					<a href="<?php echo get_permalink(); ?>"><?php the_post_thumbnail( 'home-slider' ); ?></a>
+					<div class="blurb">
+					<h3 class="entry-title"><a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a></h3>
+						<div class="entry-content">
+						<?php
+						$excerpt_length = 250;
+						$blog_excerpt = get_the_excerpt();
+						$text = strip_tags($blog_excerpt);
+						if (strlen($text) > $excerpt_length) {
+							echo $text = substr( $text, 0, $excerpt_length - 3 ).'...';
+						} else {
+							echo $text;
+						}
+							?>
+						</div><!-- .entry-content -->
+					</div><!-- .blurb -->
+				</article><!-- #post -->	
+			<?php 
+			endwhile; // end of the loop.
+			?>
+				</div>
 			</div>
 			<div class="home_archive home_archive_left">
 				<h2>NEWS / ANNOUNCEMENTS</h2>

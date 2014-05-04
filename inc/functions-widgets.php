@@ -4,7 +4,10 @@
 function im_new() { 
 	echo '
 	<div class="im_new widget">
-		<a href="' .  home_url() . '/welcome"><img src="' . get_template_directory_uri() . '/images/BluetoOrthodoxy.png"></a>
+		<a href="' .  home_url() . '/welcome">';
+		//<img src="' . get_template_directory_uri() . '/images/BluetoOrthodoxy.png">
+		echo '<span></span>
+		</a>
 	</div>
 	';
 }
@@ -36,7 +39,10 @@ function eblast() {
 function greek_logo() { 
 	echo '
 	<div class="greek_logo widget">
-		<a href="http://www.goarch.org" target="_blank"><img src="' . get_template_directory_uri() . '/images/goarch_logo.png"></a>
+		<a href="http://www.goarch.org" target="_blank">';
+		//<img src="' . get_template_directory_uri() . '/images/goarch_logo.png">
+		echo '<span></span>
+		</a>
 	</div>
 	';
 }
@@ -57,7 +63,10 @@ function daily_scripture() {
 function j20() { 
 	echo '
 	<div class="j20 widget">
-		<a href="http://www.journeytoorthodoxy.com" target="_blank"><img src="' . get_template_directory_uri() . '/images/adJTO300.png"></a>
+		<a href="http://www.journeytoorthodoxy.com" target="_blank">';
+		//<img src="' . get_template_directory_uri() . '/images/adJTO300.png">
+		echo '<span></span>
+		</a>
 	</div>
 	';
 }
@@ -67,7 +76,10 @@ function j20() {
 function liturgica() { 
 	echo '
 	<div class="liturgica widget">
-		<a href="http://www.liturgica.com" target="_blank"><img src="' . get_template_directory_uri() . '/images/liturgica.png"></a>
+		<a href="http://www.liturgica.com" target="_blank">';
+		//<img src="' . get_template_directory_uri() . '/images/liturgica.png">
+		echo '<span></span>
+		</a>
 	</div>
 	';
 }

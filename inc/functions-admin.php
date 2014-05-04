@@ -5,18 +5,19 @@ ADMIN MENU
 
 function remove_admin_menus () {
 	if (!current_user_can('manage_options')){ // Only proceed if user does not have admin role.
-		//remove_menu_page('index.php'); 				// Dashboard
+		remove_menu_page('index.php'); 				// Dashboard
 		//remove_menu_page('edit.php'); 				// Posts
 		//remove_menu_page('upload.php'); 			// Media
 		//remove_menu_page('link-manager.php'); 			// Links
 		//remove_menu_page('edit.php?post_type=page'); 		// Pages
-		//remove_menu_page('edit-comments.php'); 			// Comments
+		remove_menu_page('edit-comments.php'); 			// Comments
 		//remove_menu_page('themes.php'); 			// Appearance
 		//remove_menu_page('plugins.php'); 			// Plugins
 		//remove_menu_page('users.php'); 				// Users
-		//remove_menu_page('tools.php'); 				// Tools
+		remove_menu_page('tools.php'); 				// Tools
 		//remove_menu_page('options-general.php'); 		// Settings
- 
+		
+		remove_menu_page('edit.php?post_type=portfolio_slideshow'); 				// Slideshows
 		//remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=post_tag' );	// Remove posts->tags submenu
 		//remove_submenu_page( 'edit.php', 'edit-tags.php?taxonomy=category' );	// Remove posts->categories submenu
 		remove_submenu_page( 'index.php', 'index.php?page=simple_history_page' );
@@ -255,6 +256,30 @@ function tr_custom_admin_footer() {
 	_e('<span id="footer-thankyou">Developed by <a href="http://third-law.com" target="_blank">Kenny Scott (Third Law Web Design)</a></span>. Built using Tabula Rasa.', 'tabula_rasa');
 }
 add_filter('admin_footer_text', 'tr_custom_admin_footer');
+
+/** Redirect after login
+ * @param string $redirect_to URL to redirect to.
+ * @param string $request URL the user is coming from.
+/*************************************************************/
+function my_login_redirect( $redirect_to, $request, $user ) {
+	//is there a user to check?
+	global $user;
+	if ( isset( $user->roles ) && is_array( $user->roles ) ) {
+		//check for admins
+		if ( in_array( 'administrator', $user->roles ) ) {
+			// redirect them to the default place
+			return $redirect_to;
+		} elseif ( in_array( 'priest', $user->roles ) ) { 
+			return admin_url();
+		} else {
+			return admin_url( 'edit.php' );
+		}
+	} else {
+		return $redirect_to;
+	}
+}
+add_filter( 'login_redirect', 'my_login_redirect', 10, 3 );
+
 
 /*************************************************************
 HELP PAGE 

@@ -121,7 +121,10 @@ function tr_scripts_and_styles() {
 	/*	if ( is_singular() && wp_attachment_is_image() ) {
 		wp_enqueue_script( 'Tabula Rasa-keyboard-image-navigation', get_template_directory_uri() . '/js/keyboard-image-navigation.js', array( 'jquery' ), '20120202' );
 	} */
-	
+
+    //adding scripts file in the footer
+    wp_register_script( 'tabula_rasa-cycle', get_stylesheet_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '', true );
+		
     //adding scripts file in the footer
     wp_register_script( 'tabula_rasa-js', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), '', true );
 
@@ -132,14 +135,16 @@ function tr_scripts_and_styles() {
 		
 	//dont know if this is styled right
 	//Adds JavaScript for handling the navigation menu hide-and-show behavior.
-	wp_enqueue_script( 'tr-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
+	//wp_enqueue_script( 'tr-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0', true );
 
 	// dont know is this is styled right
 	//wp_enqueue_script( 'Tabula Rasa-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
-    // enqueue styles and scripts
+    if ( wp_is_mobile() ) {
+		// enqueue styles and scripts
     wp_enqueue_script( 'mmenu-js' );		
     wp_enqueue_style( 'mmenu-css' );
+		}
    // wp_enqueue_script( 'tabula_rasa-modernizr' );
     wp_enqueue_style( 'tabula_rasa-stylesheet' );
     wp_enqueue_style('tabula_rasa-ie-only');
@@ -149,6 +154,10 @@ function tr_scripts_and_styles() {
     // I recommend using a plugin to call jQuery using the google cdn. That way it stays cached and your site will load faster.
     wp_enqueue_script( 'jquery' );
     wp_enqueue_script( 'tabula_rasa-js' );
+		
+		if ( is_home() ) {
+			wp_enqueue_script( 'tabula_rasa-cycle' );
+		}
   }
 }
 

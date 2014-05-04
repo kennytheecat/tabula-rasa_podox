@@ -61,7 +61,7 @@ jQuery(document).ready(function($) {
     var responsive_viewport = $(window).width();
     
     /* if is below 481px */
-    if (responsive_viewport < 750) {
+    if (responsive_viewport < 550) {
 			jQuery(document).ready(function($) {
 				$("#my-menu").mmenu();
 			});       

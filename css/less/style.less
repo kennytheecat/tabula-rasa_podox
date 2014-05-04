@@ -60,7 +60,7 @@ the other stylesheets. Remember, keep it light: Speed is Important.
 @import "_base.less";
 
 /*
-LARGER MOBILE DEVICES
+LARGER MOBILE DEVICES 
 This is for devices like the Galaxy Note or something that's
 larger than an iPhone but smaller than a tablet. Let's call them
 tweeners.
@@ -72,6 +72,50 @@ tweeners.
 
 } // end of media query
 
+
+@media only screen and (min-width: 600px) {
+// import mixins
+@import "_mixins.less";
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	@import "_600up.less";
+
+} // end of media query
+
+@media only screen and (min-width: 650px) {
+// import mixins
+@import "_mixins.less";
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	ul.nav-menu li a {
+		.font-size(14px);
+	}
+	.home .home_gallery #slider {
+		.height(320px)!important;
+	}
+
+} // end of media query
+
+@media only screen and (min-width: 700px) {
+// import mixins
+@import "_mixins.less";
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	ul.nav-menu li a {
+		.font-size(16px);
+	}
+	.home .home_gallery #slider {
+		.height(350px)!important;
+	}
+
+} // end of media query
 /*
 TABLET & SMALLER LAPTOPS
 This is the average viewing window. So Desktops, Laptops, and
@@ -79,15 +123,101 @@ in general anyone not viewing on a mobile device. Here's where
 you can add resource intensive styles.
 */ 
 @media only screen and (min-width: 768px) {
-
 	// import grid and layouts
 	@import "_grid.less";
 
 	// styles in 768up.less
 	@import "_768up.less";
 
+	ul.nav-menu li {
+		.padding(5px, 7px);
+	}	
+	.home .home_gallery #slider {
+		.height(250px)!important;
+	}
+	
 } // end of media query
 
+
+@media only screen and (min-width: 800px) {
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	//@import "_800up.less";
+	
+	ul.nav-menu li {
+		.padding(5px, 9px);
+	}	
+	
+	.home .home_gallery #slider {
+		.height(250px)!important;
+	}	
+
+} // end of media query
+
+@media only screen and (min-width: 850px) {
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	//@import "_800up.less";
+
+	ul.nav-menu li {
+		.padding(5px, 10px);
+	}		
+	.home .home_gallery #slider {
+		.height(290px)!important;
+	}	
+
+} // end of media query
+
+@media only screen and (min-width: 900px) {
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	//@import "_800up.less";
+	
+	ul.nav-menu li a{
+		.font-size(18px);
+	}			
+	.home .home_gallery #slider {
+		.height(300px)!important;
+	}	
+
+} // end of media query
+
+@media only screen and (min-width: 950px) {
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	//@import "_800up.less";
+	
+	.home .home_gallery #slider {
+		.height(320px)!important;
+	}	
+
+} // end of media query
+
+@media only screen and (min-width: 1000px) {
+
+	// import grid and layouts
+	@import "_grid.less";
+
+	// styles in 768up.less
+	//@import "_800up.less";
+	
+	.home .home_gallery #slider {
+		.height(340px)!important;
+	}	
+
+} // end of media query
 /*
 DESKTOP
 This is the average viewing window. So Desktops, Laptops, and

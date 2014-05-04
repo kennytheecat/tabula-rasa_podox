@@ -31,6 +31,17 @@
 		<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
 		<![endif]-->
 
+		<?php if ( in_category('gallery') ) { ?>
+			<!-- Portfolio Slideshow-->
+			
+			<link rel="stylesheet" type="text/css" href="<?php echo home_url(); ?>/wp-content/plugins/portfolio-slideshow-pro/css/portfolio-slideshow.min.css">
+			<!--
+			<link rel="stylesheet" type="text/css" href="<?php echo home_url(); ?>/wp-content/plugins/portfolio-slideshow-pro/js/fancybox/jquery.fancybox-1.3.4.css">			
+			<noscript><link rel="stylesheet" type="text/css" href="<?php echo home_url(); ?>/wp-content/plugins/portfolio-slideshow-pro/css/portfolio-slideshow-noscript.css?ver=1.8.7" /></noscript><style type="text/css">.centered .ps-next {} .scrollable {height:50px;} .ps-prev {top:30px} .ps-next {top:-35px} .slideshow-wrapper .pscarousel img {margin-right:8px !important; margin-bottom:8px !important;}</style><script type="text/javascript">/* <![CDATA[ */var psTimeout = new Array(); psAudio = new Array(); var psAutoplay = new Array(); var psDelay = new Array(); var psFluid = new Array(); var psTrans = new Array(); var psRandom = new Array(); var psCarouselSize = new Array(); var touchWipe = new Array(); var psPagerStyle = new Array(); psCarousel = new Array(); var psSpeed = new Array(); var psLoop = new Array(); var psClickOpens = new Array(); /* ]]> */</script>
+			-->
+			<!--//Portfolio Slideshow-->
+		<?php } ?>
+
 		<!-- wordpress head functions -->
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->

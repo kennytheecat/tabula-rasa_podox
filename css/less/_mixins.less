@@ -355,7 +355,7 @@ http://0to255.com/
 @link-color:        #9F4700;
 @link-hover:        #CF5C00;
 
-@main-bg:	url('../images/bg.png');
+@main-bg:	url('../images/bg.jpg');
 /*
 Here's a great tutorial on how to
 use color variables properly:
@@ -530,4 +530,57 @@ BUTTONS
 	&:active {
 		.css-gradient( darken(@button-blue, 5%), @button-blue );
 	}
+}
+
+/** Sprite Info **/
+.sprite { 
+	background: url('../images/sprite.png') no-repeat top left;  
+	display: block;
+	background-size: cover;
+} 
+/* 1000 x 822 */ 
+
+// width = width of orig sprite / width of div
+// padding-top = height of image / width of div
+.header_sprite {
+	.sprite;
+	background-position: 0px 0%; 
+//background-position: 0px 0px; 
+	.width(100%); 
+	.padding-top(16%);
+}
+.li_icon_sprite {
+	.sprite;
+	background-position: 0px 20%; 
+//background-position: 0px -166px; 
+	.width(16px); 
+	.height(16px); 	
+}
+.liturgica_sprite {
+	.sprite;
+	background-position: 0px 26%; 
+//background-position: 0px -192px; 
+	.width(333%); 
+	.padding-top(18%); 
+}
+.j20_sprite {
+	.sprite;
+	background-position: 0px 39%; 
+//background-position: 0px -258px; 
+	.width(333%); 
+	.padding-top(50%); 		
+}
+.im_new_sprite {
+	.sprite;
+	background-position: 0px 58%; 
+//background-position: 0px -418px; 
+	.width(333%); 
+	.padding-top(33%); 		
+}
+.goarch_sprite {
+	.sprite;
+	background-position: 0px 100%; 
+//background-position: 0px -526px; 
+	.width(333%); 
+	.padding-top(100%);  		
 }

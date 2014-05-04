@@ -166,6 +166,7 @@ function tr_theme_specific_support() {
 	if ( function_exists( 'add_image_size' ) ) { 
 		add_image_size( 'small-thumbnail', 90, 90, true ); //500 pixels wide 
 		add_image_size( 'home-gallery', 300, 125, true ); //500 pixels wide 
+		add_image_size( 'home-slider', 620, 350, true ); //500 pixels wide 
 		//add_image_size( 'featured-destination', 300, 280, true ); //300 pixels wide 
 		//add_image_size( 'page-banner', 640, 150, true ); //640 pixels wide 
 	}	
