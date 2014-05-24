@@ -50,7 +50,7 @@
 		<?php else : ?>
 		<div class="entry-content">
 			<?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'tabula-rasa' ) ); ?>
-			<?php echo do_shortcode('[portfolio_slideshow centered=true click=lightbox thumbnailsize=80]'); ?>
+			<?php echo do_shortcode('[portfolio_slideshow size=gallery-main slideheight=400 centered=true loop=true click=lightbox thumbnailsize=80]'); ?>
 			<?php wp_link_pages( array( 'before' => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'tabula-rasa' ) . '</span>', 'after' => '</div>', 'link_before' => '<span>', 'link_after' => '</span>' ) ); ?>
 		</div><!-- .entry-content -->
 		<?php endif; ?>
@@ -60,7 +60,7 @@
 			<?php //edit_post_link( __( 'Edit', 'tabula-rasa' ), '<span class="edit-link">', '</span>' ); ?>
 			<?php if ( comments_open() && ! is_single() ) : ?>
 				<div class="comments-link">
-					<?php comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'tabula-rasa' ) . '</span>', __( 'One comment so far', 'tabula-rasa' ), __( 'View all % comments', 'tabula-rasa' ) ); ?>
+					<?php //comments_popup_link( '<span class="leave-reply">' . __( 'Leave a comment', 'tabula-rasa' ) . '</span>', __( 'One comment so far', 'tabula-rasa' ), __( 'View all % comments', 'tabula-rasa' ) ); ?>
 				</div><!-- .comments-link -->
 			<?php endif; // comments_open() ?>			
 			<?php if ( is_single() && get_the_author_meta( 'description' ) && is_multi_author() ) : // If a user has filled out their description and this is a multi-author blog, show a bio on their entries. ?>
@@ -69,7 +69,7 @@
 		</footer><!-- .entry-meta -->
 	</article><!-- #post -->
 				<?php tr_content_nav( 'nav-single' ); ?>
-				<?php comments_template( '', true ); ?>
+				<?php //comments_template( '', true ); ?>
 
 			<?php endwhile; // end of the loop. ?>
 

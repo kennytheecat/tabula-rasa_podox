@@ -149,7 +149,7 @@ THEME SUPPORT
 /** Google Fonts
 **************************************************************/
 function tr_theme_specific_scripts_and_styles() {
-wp_register_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:400,700,800,600,300|Open+Sans+Condensed:700|Old+Standard+TT:400,700');
+wp_register_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Open+Sans:700,800');
 wp_enqueue_style( 'google-fonts' );
 }
 add_action('wp_enqueue_scripts', 'tr_theme_specific_scripts_and_styles', 999);
@@ -164,6 +164,8 @@ function tr_theme_specific_support() {
 	set_post_thumbnail_size(116, 116, true);
 
 	if ( function_exists( 'add_image_size' ) ) { 
+		add_image_size( 'gallery-thumbnail', 80, 80, true ); //500 pixels wide 
+		add_image_size( 'gallery-main', 500, 500 ); //500 pixels wide 
 		add_image_size( 'small-thumbnail', 90, 90, true ); //500 pixels wide 
 		add_image_size( 'home-gallery', 300, 125, true ); //500 pixels wide 
 		add_image_size( 'home-slider', 620, 350, true ); //500 pixels wide 

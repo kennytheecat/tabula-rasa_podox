@@ -122,7 +122,7 @@ get_header(); ?>
 				$cat_link = get_category_link( $cat_id );					
 				$args = array (
 					'category_name'         	=> $cat_name,
-					'posts_per_page'        	=> '4',
+					'posts_per_page'        	=> '3',
 					'category__not_in'				=> 870
 				);
 					$archive = new WP_Query( $args );
@@ -186,7 +186,7 @@ get_header(); ?>
 				$cat_link = get_category_link( $cat_id );					
 				$args = array (
 					'category_name'          => $cat_name,
-					'posts_per_page'         => '4',
+					'posts_per_page'         => '3',
 				);
 				$archive = new WP_Query( $args );
 				while($archive->have_posts()) : $archive->the_post(); ?>
@@ -224,7 +224,7 @@ get_header(); ?>
 				$cat_link = get_category_link( $cat_id );					
 				$args = array (
 					'category_name'          => $cat_name,
-						'posts_per_page'         => '10'
+						'posts_per_page'         => '6'
 					);
 					$archive = new WP_Query( $args );
 					while($archive->have_posts()) : $archive->the_post(); ?>

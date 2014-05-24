@@ -9,7 +9,7 @@ the separate media queries. The base mobile goes outside any query
 and is called at the beginning, after that we call the rest
 of the styles inside media queries.
 ******************************************************************/
-
+ 
 /******************************************************************
 TABLE OF CONTENTS
 1.0 - Normalize.css
@@ -83,6 +83,9 @@ tweeners.
 	// styles in 768up.less
 	@import "_600up.less";
 
+ul.nav-menu li:hover ul {
+	display: block;
+}	
 } // end of media query
 
 @media only screen and (min-width: 650px) {
@@ -97,6 +100,10 @@ tweeners.
 	}
 	.home .home_gallery #slider {
 		.height(320px)!important;
+		
+		article {
+			.height(425px)!important;
+		}
 	}
 
 } // end of media query
@@ -113,6 +120,10 @@ tweeners.
 	}
 	.home .home_gallery #slider {
 		.height(350px)!important;
+
+		article {
+			.height(455px)!important;
+		}		
 	}
 
 } // end of media query
@@ -134,6 +145,10 @@ you can add resource intensive styles.
 	}	
 	.home .home_gallery #slider {
 		.height(250px)!important;
+
+		article {
+			.height(365px)!important;
+		}				
 	}
 	
 } // end of media query
@@ -170,6 +185,10 @@ you can add resource intensive styles.
 	}		
 	.home .home_gallery #slider {
 		.height(290px)!important;
+
+		article {
+			.height(395px)!important;
+		}			
 	}	
 
 } // end of media query
@@ -187,6 +206,10 @@ you can add resource intensive styles.
 	}			
 	.home .home_gallery #slider {
 		.height(300px)!important;
+		
+		article {
+			.height(405px)!important;
+		}				
 	}	
 
 } // end of media query
@@ -201,6 +224,10 @@ you can add resource intensive styles.
 	
 	.home .home_gallery #slider {
 		.height(320px)!important;
+		
+		article {
+			.height(425px)!important;
+		}			
 	}	
 
 } // end of media query
@@ -215,6 +242,10 @@ you can add resource intensive styles.
 	
 	.home .home_gallery #slider {
 		.height(340px)!important;
+		
+		article {
+			.height(435px)!important;
+		}					
 	}	
 
 } // end of media query
@@ -226,9 +257,16 @@ you can add resource intensive styles.
 */
 @media only screen and (min-width: 1030px) {
 
+	// import grid and layouts
+	@import "_grid.less";
+	
 	// styles in 1030up.less
 	@import "_1030up.less";
 
+	.home .home_gallery #slider article {
+			.height(445px)!important;
+	}	
+		
 } // end of media query
 
 /*

@@ -182,8 +182,9 @@ function disable_default_dashboard_widgets() {
 			remove_meta_box('wpseo_meta', 'construction', 'normal'); 
 		}
 	}
-	if (!current_user_can('manage_options')){	
+	if (!current_user_can('administrator')){	
 		remove_meta_box('simple_history_dashboard_widget', 'dashboard', 'normal'); // Simple History Module
+		remove_meta_box('portfolio_slideshow', 'post', 'side'); // Simple History Module
 	}	
 }
 add_action('admin_menu', 'disable_default_dashboard_widgets');
@@ -247,6 +248,11 @@ CUSTOMIZE ADMIN
 function load_custom_wp_admin_style() {
 	wp_register_style( 'custom_wp_admin_css', get_template_directory_uri() . '/css/admin.css', false, '1.0.0' );
 	wp_enqueue_style( 'custom_wp_admin_css' );
+	
+	if ( !current_user_can('administrator') ){
+		wp_register_style( 'custom_wp_not_admin_css', get_template_directory_uri() . '/css/not-admin.css', false, '1.0.0' );
+		wp_enqueue_style( 'custom_wp_not_admin_css' );	
+	}	
 }
 add_action( 'admin_enqueue_scripts', 'load_custom_wp_admin_style' );
 
@@ -292,5 +298,5 @@ function my_help_menu() {
 function help_options() {
 	include('theme-options-inc/help.php');
 }
-//add_action( 'admin_menu', 'my_help_menu' );
+add_action( 'admin_menu', 'my_help_menu' );
 ?>

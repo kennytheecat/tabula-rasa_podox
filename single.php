@@ -16,7 +16,7 @@ get_header(); ?>
 
 				<?php get_template_part( 'content', get_post_format() ); ?>
 				<?php tr_content_nav( 'nav-single' ); ?>
-				<?php comments_template( '', true ); ?>
+				<?php //comments_template( '', true ); ?>
 
 			<?php endwhile; // end of the loop. ?>
 

@@ -24,16 +24,6 @@ function schedule() {
 	';
 }
 
-/* Eblast
-*****************************************/
-function eblast() { 
-	echo '
-	<div class="eblast widget">
-		<a href="http://www.goarch.org/listsubscribe?l=PRESCOTTORTHODOX" target="_blank"><img src="' . get_template_directory_uri() . '/images/EBlast.png"></a>
-	</div>
-	';
-}
-
 /* Greek Diocese Logo
 *****************************************/
 function greek_logo() { 
@@ -49,11 +39,12 @@ function greek_logo() {
 
 /* Daily Scripture Readings
 *****************************************/
-function daily_scripture() { 
+function online_chapel() { 
 	echo '
-	<div class="daily_scripture widget">
-		<h3 class="widget-title">DAILY SCRIPTURE READINGS</h3>
-		<script src="//www.gmodules.com/ig/ifr?url=http://onlinechapel.goarch.org/gadgets/goarch.xml&amp;up_maxSaints=5&amp;up_language=English&amp;up_showIcon=1&amp;up_showClip=0&amp;synd=open&amp;w=300&amp;h=425&amp;title=&amp;border=%23ffffff%7C3px%2C1px+solid+%23999999&amp;output=js"></script>
+	<div class="online_chapel widget">
+		<a href="http://www.goarch.org/chapel/" target="_blank">
+		<span></span>
+		</a>
 	</div>
 	';
 }
@@ -71,26 +62,13 @@ function j20() {
 	';
 }
 
-/* Liturgica
+/* Salvation Video
 *****************************************/
-function liturgica() { 
+function salvation_video() { 
 	echo '
-	<div class="liturgica widget">
-		<a href="http://www.liturgica.com" target="_blank">';
-		//<img src="' . get_template_directory_uri() . '/images/liturgica.png">
-		echo '<span></span>
-		</a>
-	</div>
-	';
-}
-
-/* Fredricka Matthews-Green Salvation Video
-*****************************************/
-function green_video() { 
-	echo '
-	<div class="green_video widget">
+	<div class="salvation_video widget">
 		<h3 class="widget-title">THE ORTHODOX VIEW OF SALVATION</h3>
-		<object width="480" height="385"><param name="movie" value="http://www.youtube.com/v/sAlCze3ZFjA&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/sAlCze3ZFjA&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="480" height="385"></embed></object>
+		<iframe width="420" height="315" src="//www.youtube.com/embed/WosgwLekgn8" frameborder="0" allowfullscreen></iframe>
 	</div>
 	';
 }
@@ -98,12 +76,10 @@ function green_video() {
 function register_widgets() {
 	register_sidebar_widget('I\'m New', 'im_new');
 	register_sidebar_widget('Schedule', 'schedule');
-	register_sidebar_widget('Eblast', 'eblast');
 	register_sidebar_widget('Greek Diocese Logo', 'greek_logo');
-	register_sidebar_widget('Daily Scripture Readings', 'daily_scripture');
+	register_sidebar_widget('Online Chapel', 'online_chapel');
 	register_sidebar_widget('Journey to Orthodoxy', 'j20');
-	register_sidebar_widget('Liturgica', 'liturgica');
-	register_sidebar_widget('The Orthodox View Of Salvation In Christ', 'green_video');
+	register_sidebar_widget('The Orthodox View Of Salvation In Christ', 'salvation_video');
 }
 add_action('widgets_init', 'register_widgets');
 ?>

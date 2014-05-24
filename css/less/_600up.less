@@ -176,12 +176,12 @@ ul.nav-menu {
 				ul.sub-menu {
 					display: none;
 				}
-				&:hover ul { 
+				&:hover ul {
 					position: absolute;
-					display: inline-block;
+					display: block;
 					.margin-left(140px);
 					.margin-top(-40px);
-					z-index: 50;
+					z-index: 50; 
 				}				
 			}
 		}
@@ -249,14 +249,22 @@ STANDARD PAGES
 			.height(290px)!important;
 			article {
 				position: absolute;
+				.height(395px)!important;
+				width: 100%!important;
+				
+				img {
+					background-size: cover;
+					width: 100%;
+				}
 				
 				.blurb {
-					position: relative;
-					.bottom(85px);
+					position: absolute;
+					.bottom(100px);
 					left: 0;
 					background: rgba(0, 0, 0, 0.7);
 					.min-height(80px);
 					.padding(0, 10px);
+					width: 100%;
 					
 					.entry-title {}
 					.entry-content {

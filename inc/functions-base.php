@@ -126,7 +126,7 @@ function tr_scripts_and_styles() {
     wp_register_script( 'tabula_rasa-cycle', get_stylesheet_directory_uri() . '/js/jquery.cycle.all.min.js', array( 'jquery' ), '', true );
 		
     //adding scripts file in the footer
-    wp_register_script( 'tabula_rasa-js', get_stylesheet_directory_uri() . '/js/scripts.js', array( 'jquery' ), '', true );
+    wp_register_script( 'tabula_rasa-js', get_stylesheet_directory_uri() . '/js/scripts.min.js', array( 'jquery' ), '', true );
 
     //mobile menu
     wp_register_script( 'mmenu-js', get_stylesheet_directory_uri() . '/js/jquery.mmenu.js', array( 'jquery' ), '', true );
@@ -144,7 +144,7 @@ function tr_scripts_and_styles() {
 		// enqueue styles and scripts
     wp_enqueue_script( 'mmenu-js' );		
     wp_enqueue_style( 'mmenu-css' );
-	//	}
+		//}
    // wp_enqueue_script( 'tabula_rasa-modernizr' );
     wp_enqueue_style( 'tabula_rasa-stylesheet' );
     wp_enqueue_style('tabula_rasa-ie-only');
