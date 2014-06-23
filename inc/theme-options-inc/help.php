@@ -22,3 +22,19 @@
 	<li>On the right hand sidebar, in the "Publish" section at the top, click "Publish"</li>
 	<li>Done.</li>
 </ol>
+
+<h2>Add Photo Gallery</h2>
+<ol>
+	<li>Click "Posts" on left sidebar</li>
+	<li>Click "Add New"</li>
+	<li>Where it says, "Enter title here" type a title for the gallery</li>
+	<li>Click the "Add Media" button</li>
+	<li>From this screen you can drag and drop the photos or find them after clicking the "Upload Files" button</li>
+	<li>When you do so, it loads. Do not click "Insert into post", just click the x at the top right.</li>
+	<li>On the right hand sidebar, in the "Categories" section, check the box that "Gallery"</li>
+	<li>On the right hand sidebar, in the "Featured Image" section, click "Set featured image"</li>
+	<li>On this screen, choose the image you want to be the featured image( the one that shows up throughout the sits on listing sections)</li>
+	<li>Click "Set featured image" after image uploads</li>
+	<li>On the right hand sidebar, in the "Publish" section at the top, click "Publish"</li>
+	<li>Done.</li>
+</ol>
